@@ -1,0 +1,36 @@
+<div data-audio>
+  <button data-audio-play>
+    Pause
+  </button>
+
+  <div data-audio-progress>
+    <div data-progress-preload></div>
+    <div data-progress-inner>
+      <button data-progress-button></button>
+    </div>
+
+    <span data-audio-time>00:00:00</span>
+  </div>
+</div>
+
+<button data-audio-mute>
+  Volume
+</button>
+
+<div data-audio-volume>
+  <div data-progress-inner>
+    <button data-progress-button></button>
+  </div>
+</div>
+
+<select data-audio-speed>
+  <option value="1">1x</option>
+  <option value="1.25">1.25x</option>
+  <option value="1.5">1.5x</option>
+  <option value="1.75">1.75x</option>
+  <option value="2">2x</option>
+</select>
+
+<audio preload="auto" data-audio-player>
+  <source src="/wd-320.mp3" type="audio/mpeg">
+</audio>
