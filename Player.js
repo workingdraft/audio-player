@@ -108,7 +108,7 @@ class Player {
   setTime(timePercent) {
     const time = this.audio.duration * (timePercent / 100)
 
-    this.audio.currentTime = parseFloat(time, 10).toFixed(2)
+    this.audio.currentTime = time.toFixed(2)
   }
 
   getTimeFromSeconds(seconds) {
