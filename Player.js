@@ -1,5 +1,5 @@
 import Progress from './Progress'
-import MediaSession from './MediaSession';
+import MediaSession from './MediaSession'
 
 class Player {
   constructor(element) {
@@ -14,10 +14,8 @@ class Player {
     this.handleVolumeChange = this.handleVolumeChange.bind(this)
     this.setTime = this.setTime.bind(this)
     this.setVolume = this.setVolume.bind(this)
-    this.setupMediaSession = this.setupMediaSession.bind(this)
     this.setPlaybackRate = this.setPlaybackRate.bind(this)
-
-    this.setAudio(element)
+    this.setupMediaSession = this.setupMediaSession.bind(this)
 
     this.progress = new Progress({
       element: element.querySelector('[data-audio-progress]'),
@@ -31,17 +29,20 @@ class Player {
 
     this.setAudio(element)
 
-    element.querySelector('[data-audio-play]')
+    element
+      .querySelector('[data-audio-play]')
       .addEventListener('click', this.togglePlay)
 
     this.time = {
-      stringElement: element.querySelector('[data-audio-time]')
+      stringElement: element.querySelector('[data-audio-time]'),
     }
 
-    element.querySelector('[data-audio-mute]')
+    element
+      .querySelector('[data-audio-mute]')
       .addEventListener('click', this.toggleVolume)
 
-    element.querySelector('[data-audio-speed]')
+    element
+      .querySelector('[data-audio-speed]')
       .addEventListener('change', this.setPlaybackRate)
   }
 
@@ -125,12 +126,12 @@ class Player {
       artist: 'Nat King Cole',
       album: 'The Ultimate Collection (Remastered)',
       artwork: [
-        { src: 'https://dummyimage.com/96x96', sizes: '96x96', type: 'image/png' },
-        { src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
-        { src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png' },
-        { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
-        { src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png' },
-        { src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' },
+        {src: 'https://dummyimage.com/96x96', sizes: '96x96', type: 'image/png'},
+        {src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png'},
+        {src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png'},
+        {src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png'},
+        {src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png'},
+        {src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png'},
       ],
       onPlay: this.togglePlay,
       onPause: this.togglePlay,
@@ -139,7 +140,7 @@ class Player {
 
   static getTimeFromSeconds(seconds) {
     const time = []
-    seconds = parseInt(seconds, 10);
+    seconds = parseInt(seconds, 10)
     time[0] = `0${Math.floor(seconds / 3600)}`
     time[1] = `0${Math.floor((seconds - (time[0] * 3600)) / 60)}`
     time[2] = `0${seconds - (time[0] * 3600) - (time[1] * 60)}`
