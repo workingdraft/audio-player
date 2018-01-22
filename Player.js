@@ -126,7 +126,7 @@ class Player {
   }
 
   setPlaybackRate(event) {
-    const rate = parseFloat(event.target.value, 10)
+    const rate = parseFloat(event.target.value)
 
     this.audio.playbackRate = rate
   }
