@@ -111,24 +111,12 @@ class Player {
     this.audio.currentTime = time.toFixed(2)
   }
 
-  getTimeFromSeconds(seconds) {
-    const time = []
-    seconds = parseInt(seconds, 10);
-    time[0] = `0${Math.floor(seconds / 3600)}`
-    time[1] = `0${Math.floor((seconds - (time[0] * 3600)) / 60)}`
-    time[2] = `0${seconds - (time[0] * 3600) - (time[1] * 60)}`
-
-    return time.map(t => t.substr(-2)).join(':')
-  }
-
   setTimeString(time) {
-    this.time.stringElement.innerText = this.getTimeFromSeconds(time)
+    this.time.stringElement.innerText = Player.getTimeFromSeconds(time)
   }
 
   setPlaybackRate(event) {
-    const rate = parseFloat(event.target.value)
-
-    this.audio.playbackRate = rate
+    this.audio.playbackRate = parseFloat(event.target.value)
   }
 
   setupMediaSession() {
@@ -147,6 +135,16 @@ class Player {
       onPlay: this.togglePlay,
       onPause: this.togglePlay,
     })
+  }
+
+  static getTimeFromSeconds(seconds) {
+    const time = []
+    seconds = parseInt(seconds, 10);
+    time[0] = `0${Math.floor(seconds / 3600)}`
+    time[1] = `0${Math.floor((seconds - (time[0] * 3600)) / 60)}`
+    time[2] = `0${seconds - (time[0] * 3600) - (time[1] * 60)}`
+
+    return time.map(t => t.substr(-2)).join(':')
   }
 }
 
