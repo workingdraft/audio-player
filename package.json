@@ -6,14 +6,17 @@
   "author": "Hans Christian Reinl <info@drublic.de>",
   "license": "MIT",
   "scripts": {
+    "start": "concurrently 'yarn serve' 'yarn build --watch'",
     "build": "webpack",
-    "serve": "node __tests__/visual/server.js"
+    "serve": "nodemon __tests__/visual/server.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "concurrently": "^3.5.1",
     "express": "^4.16.2",
+    "nodemon": "^1.15.0",
     "webpack": "^3.10.0"
   }
 }
