@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
 <style>
   html {
@@ -13,13 +12,15 @@
 
 <link rel="stylesheet" href="./player.css">
 
-<div class="audio">
-  <div class="audio_progress audio_sound" data-audio>
+<script src="/dist/app.js"></script>
+
+<div class="audio" data-audio>
+  <div class="audio_progress audio_sound">
     <button data-audio-play>
       Pause
     </button>
 
-    <div class="audio_progress" data-audio-progress>
+    <div class="audio_progress_bar" data-audio-progress>
       <div class="audio_progress_preloaded" data-progress-preload></div>
       <div class="audio_progress_inner" data-progress-inner>
         <button class="audio_progress_button" data-progress-button></button>
@@ -54,6 +55,6 @@
   </div>
 
   <audio preload="auto" data-audio-player>
-    <source src="/wd-320.mp3" type="audio/mpeg">
+    <source src="/test.mp3" type="audio/mpeg">
   </audio>
 </div>

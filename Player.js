@@ -15,8 +15,7 @@ class Player {
     this.setTime = this.setTime.bind(this)
     this.setVolume = this.setVolume.bind(this)
     this.setPlaybackrate = this.setPlaybackrate.bind(this)
-
-    this.setAudio(element)
+    this.setupMediaSession = this.setupMediaSession.bind(this)
 
     this.progress = new Progress({
       element: element.querySelector('[data-audio-progress]'),
@@ -27,6 +26,8 @@ class Player {
       element: element.querySelector('[data-audio-volume]'),
       handleProgress: this.setVolume,
     })
+
+    this.setAudio(element)
 
     element.querySelector('[data-audio-play]')
       .addEventListener('click', this.togglePlay)
@@ -46,6 +47,11 @@ class Player {
     this.audio = element.querySelector('[data-audio-player]')
 
     this.audio.addEventListener('loadedmetadata', this.handleMetadata)
+
+    if (this.audio.readyState >= 2) {
+      this.handleMetadata()
+    }
+
     this.audio.addEventListener('timeupdate', this.handleProgress)
     this.audio.addEventListener('volumechange', this.handleVolumeChange)
   }
