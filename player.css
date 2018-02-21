@@ -4,10 +4,6 @@
   --audio--color--select: #8f098f;
 }
 
-.audio {
-  display: flex;
-}
-
 .audio_sound {
   display: flex;
   flex: 4;
@@ -55,8 +51,8 @@
 }
 
 .audio_progress {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .audio_progress_bar {
@@ -66,7 +62,6 @@
   background-color: rgba(255, 255, 255, 0.5);
   margin-top: 0.5rem;
   margin-left: 0.5rem;
-  margin-right: 1.5rem;
   border-radius: 10px;
 }
 
@@ -110,17 +105,27 @@
 }
 
 .audio_speed {
-  padding-top: 2rem;
+  padding-top: 1rem;
   padding-left: 0.5rem;
   font-size: 0.875rem;
+  margin-left: 1rem;
 }
 
-.audio_select {
-  appearance: none;
-  border: 0;
-  border-bottom: 3px solid var(--audio--color--select);
-  border-radius: 0;
-  padding: 0.25rem;
-  background-color: transparent;
-  border-radius: 2px;
+@media (min-width: 40rem) {
+  .audio {
+    display: flex;
+  }
+
+  .audio_progress {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .audio_progress_bar {
+    margin-right: 1.5rem;
+  }
+
+  .audio_speed {
+    padding-top: 2rem;
+  }
 }
