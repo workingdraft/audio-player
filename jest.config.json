@@ -1,0 +1,12 @@
+{
+  "collectCoverageFrom": [
+    "**/*.js",
+    "!__tests__/**/*",
+    "!webpack.config.js"
+  ],
+  "coverageDirectory": "__tests__/coverage/",
+  "moduleFileExtensions": [
+    "js"
+  ],
+  "testRegex": "\\-test\\.js$"
+}

@@ -8,7 +8,9 @@
   "scripts": {
     "start": "concurrently 'yarn serve' 'yarn build --watch'",
     "build": "webpack",
-    "serve": "nodemon __tests__/visual/server.js"
+    "serve": "nodemon __tests__/visual/server.js",
+    "test": "jest --watch --config jest.config.json --coverage",
+    "test:once": "jest --bail --config jest.config.json --coverage"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -17,6 +19,13 @@
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
     "nodemon": "^1.15.0",
+    "jest": "^22.1.4",
     "webpack": "^3.10.0"
+  },
+  "dependencies": {},
+  "babel": {
+    "presets": [
+      "env"
+    ]
   }
 }

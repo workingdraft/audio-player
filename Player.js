@@ -1,5 +1,5 @@
 import Progress from './Progress'
-import MediaSession from './MediaSession';
+import MediaSession from './MediaSession'
 
 class Player {
   constructor(element) {
@@ -14,7 +14,7 @@ class Player {
     this.handleVolumeChange = this.handleVolumeChange.bind(this)
     this.setTime = this.setTime.bind(this)
     this.setVolume = this.setVolume.bind(this)
-    this.setPlaybackrate = this.setPlaybackrate.bind(this)
+    this.setPlaybackRate = this.setPlaybackRate.bind(this)
     this.setupMediaSession = this.setupMediaSession.bind(this)
 
     this.progress = new Progress({
@@ -29,18 +29,21 @@ class Player {
 
     this.setAudio(element)
 
-    element.querySelector('[data-audio-play]')
+    element
+      .querySelector('[data-audio-play]')
       .addEventListener('click', this.togglePlay)
 
     this.time = {
-      stringElement: element.querySelector('[data-audio-time]')
+      stringElement: element.querySelector('[data-audio-time]'),
     }
 
-    element.querySelector('[data-audio-mute]')
+    element
+      .querySelector('[data-audio-mute]')
       .addEventListener('click', this.toggleVolume)
 
-    element.querySelector('[data-audio-speed]')
-      .addEventListener('change', this.setPlaybackrate)
+    element
+      .querySelector('[data-audio-speed]')
+      .addEventListener('change', this.setPlaybackRate)
   }
 
   setAudio(element) {
@@ -106,27 +109,15 @@ class Player {
   setTime(timePercent) {
     const time = this.audio.duration * (timePercent / 100)
 
-    this.audio.currentTime = parseFloat(time, 10).toFixed(2)
-  }
-
-  getTimeFromSeconds(seconds) {
-    const time = []
-    seconds = parseInt(seconds, 10);
-    time[0] = `0${Math.floor(seconds / 3600)}`
-    time[1] = `0${Math.floor((seconds - (time[0] * 3600)) / 60)}`
-    time[2] = `0${seconds - (time[0] * 3600) - (time[1] * 60)}`
-
-    return time.map(t => t.substr(-2)).join(':')
+    this.audio.currentTime = time.toFixed(2)
   }
 
   setTimeString(time) {
-    this.time.stringElement.innerText = this.getTimeFromSeconds(time)
+    this.time.stringElement.innerText = Player.getTimeFromSeconds(time)
   }
 
-  setPlaybackrate(event) {
-    const rate = parseFloat(event.target.value, 10)
-
-    this.audio.playbackRate = rate
+  setPlaybackRate(event) {
+    this.audio.playbackRate = parseFloat(event.target.value)
   }
 
   setupMediaSession() {
@@ -135,16 +126,26 @@ class Player {
       artist: 'Nat King Cole',
       album: 'The Ultimate Collection (Remastered)',
       artwork: [
-        { src: 'https://dummyimage.com/96x96', sizes: '96x96', type: 'image/png' },
-        { src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
-        { src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png' },
-        { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
-        { src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png' },
-        { src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' },
+        {src: 'https://dummyimage.com/96x96', sizes: '96x96', type: 'image/png'},
+        {src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png'},
+        {src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png'},
+        {src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png'},
+        {src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png'},
+        {src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png'},
       ],
       onPlay: this.togglePlay,
       onPause: this.togglePlay,
     })
+  }
+
+  static getTimeFromSeconds(seconds) {
+    const time = []
+    seconds = parseInt(seconds, 10)
+    time[0] = `0${Math.floor(seconds / 3600)}`
+    time[1] = `0${Math.floor((seconds - (time[0] * 3600)) / 60)}`
+    time[2] = `0${seconds - (time[0] * 3600) - (time[1] * 60)}`
+
+    return time.map(t => t.substr(-2)).join(':')
   }
 }
 
