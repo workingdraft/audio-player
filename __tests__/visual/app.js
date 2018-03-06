@@ -1,6 +1,14 @@
-import Player from '../../Player'
+import { Player, Builder } from '../../'
 
 window.onload = () => {
-  const element = document.querySelector('[data-audio]')
-  const player = new Player(element)
+  const elements = document.querySelectorAll('[data-render]')
+  const builder = new Builder()
+
+  Array.from(elements).forEach((element) => {
+    element.appendChild(
+      builder.render()
+    )
+
+    new Player(element)
+  })
 }

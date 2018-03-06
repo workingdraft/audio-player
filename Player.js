@@ -4,6 +4,7 @@ import MediaSession from './MediaSession'
 class Player {
   constructor(element) {
     this.element = element
+    this.name = `audio`
     this.audio = null
     this.duration = 0
 
@@ -18,36 +19,36 @@ class Player {
     this.setupMediaSession = this.setupMediaSession.bind(this)
 
     this.progress = new Progress({
-      element: element.querySelector('[data-audio-progress]'),
+      element: element.querySelector(`[data-${this.name}-progress]`),
       handleProgress: this.setTime,
     })
 
     this.volume = new Progress({
-      element: element.querySelector('[data-audio-volume]'),
+      element: element.querySelector(`[data-${this.name}-volume]`),
       handleProgress: this.setVolume,
     })
 
     this.setAudio(element)
 
     element
-      .querySelector('[data-audio-play]')
+      .querySelector(`[data-${this.name}-play]`)
       .addEventListener('click', this.togglePlay)
 
     this.time = {
-      stringElement: element.querySelector('[data-audio-time]'),
+      stringElement: element.querySelector(`[data-${this.name}-time]`),
     }
 
     element
-      .querySelector('[data-audio-mute]')
+      .querySelector(`[data-${this.name}-mute]`)
       .addEventListener('click', this.toggleVolume)
 
     element
-      .querySelector('[data-audio-speed]')
+      .querySelector(`[data-${this.name}-speed]`)
       .addEventListener('change', this.setPlaybackRate)
   }
 
   setAudio(element) {
-    this.audio = element.querySelector('[data-audio-player]')
+    this.audio = element.querySelector(`[data-${this.name}-player]`)
 
     this.audio.addEventListener('loadedmetadata', this.handleMetadata)
 

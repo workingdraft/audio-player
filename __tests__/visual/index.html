@@ -14,46 +14,7 @@
 
 <script src="/dist/app.js"></script>
 
-<div class="audio" data-audio>
-  <div class="audio_progress audio_sound">
-    <button data-audio-play>
-      Pause
-    </button>
-
-    <div class="audio_progress_bar" data-audio-progress>
-      <div class="audio_progress_preloaded" data-progress-preload></div>
-      <div class="audio_progress_inner" data-progress-inner>
-        <button class="audio_progress_button" data-progress-button></button>
-      </div>
-
-      <span data-audio-time>00:00:00</span>
-    </div>
-  </div>
-
-  <div class="audio_progress audio_volume">
-    <button class="audio_button audio_button--volume" data-audio-mute>
-      Volume
-    </button>
-
-    <div class="audio_progress_bar" data-audio-volume>
-      <div class="audio_progress_inner" data-progress-inner>
-        <button class="audio_progress_button" data-progress-button></button>
-      </div>
-    </div>
-  </div>
-
-  <div class="audio_speed">
-    <label for="" class="audio_label">Speed</label>
-
-    <select class="audio_select" data-audio-speed>
-      <option value="1">1x</option>
-      <option value="1.25">1.25x</option>
-      <option value="1.5">1.5x</option>
-      <option value="1.75">1.75x</option>
-      <option value="2">2x</option>
-    </select>
-  </div>
-
+<div data-render>
   <audio preload="auto" data-audio-player>
     <source src="/test.mp3" type="audio/mpeg">
   </audio>
