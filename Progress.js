@@ -1,5 +1,5 @@
 class Progress {
-  /* private */static getPercentage(percentage) {
+  static getPercentage(percentage) {
     if (percentage > 100) {
       return 100
     }
