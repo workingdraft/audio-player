@@ -2,8 +2,10 @@ import Progress from './Progress'
 import MediaSession from './MediaSession'
 
 class Player {
-  constructor(element) {
+  constructor(element, config) {
     this.element = element
+    this.config = config
+
     this.name = 'audio'
     this.audio = null
     this.duration = 0
@@ -122,23 +124,12 @@ class Player {
   }
 
   setupMediaSession() {
-    const mediaSession = new MediaSession({
-      title: 'Unforgettable',
-      artist: 'Nat King Cole',
-      album: 'The Ultimate Collection (Remastered)',
-      artwork: [
-        { src: 'https://dummyimage.com/96x96', sizes: '96x96', type: 'image/png' },
-        { src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
-        { src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png' },
-        { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
-        { src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png' },
-        { src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' },
-      ],
+    const settings = Object.assign(this.config, {
       onPlay: this.togglePlay,
       onPause: this.togglePlay,
     })
 
-    return mediaSession
+    return new MediaSession(settings)
   }
 
   static getTimeFromSeconds(propsSeconds) {
