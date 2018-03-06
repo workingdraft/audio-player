@@ -55,7 +55,7 @@ class Progress {
   }
 
   update(percentage) {
-    const calculatedPercentage = this.getPercentage(percentage)
+    const calculatedPercentage = Progress.getPercentage(percentage)
 
     this.setWidth(calculatedPercentage)
   }
