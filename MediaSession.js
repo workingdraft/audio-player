@@ -1,6 +1,10 @@
 class MediaSession {
+  static isSupported() {
+    return 'mediaSession' in navigator
+  }
+
   constructor(options) {
-    if (!this.isSupported()) {
+    if (!MediaSession.isSupported()) {
       return
     }
 
@@ -28,21 +32,16 @@ class MediaSession {
     })
   }
 
-  isSupported() {
-    return 'mediaSession' in navigator
-  }
-
   getMetaData() {
-    return new MediaMetadata({
+    return new window.MediaMetadata({
       title: this.settings.title,
       artist: this.settings.artist,
       album: this.settings.album,
-      artwork: this.settings.artwork.map((artwork) => ({
-          src: artwork.src,
-          sizes: artwork.src,
-          type: 'image/png'
-        })
-      )
+      artwork: this.settings.artwork.map(artwork => ({
+        src: artwork.src,
+        sizes: artwork.src,
+        type: 'image/png',
+      })),
     })
   }
 
@@ -51,13 +50,13 @@ class MediaSession {
       id: 'play',
       func: () => {
         this.settings.onPlay()
-        navigator.mediaSession.playbackState = "playing"
+        navigator.mediaSession.playbackState = 'playing'
       },
     }, {
       id: 'pause',
       func: () => {
         this.settings.onPause()
-        navigator.mediaSession.playbackState = "playing"
+        navigator.mediaSession.playbackState = 'playing'
       },
     }, {
       id: 'seekbackward',

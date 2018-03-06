@@ -1,4 +1,16 @@
 class Progress {
+  /* private */static getPercentage(percentage) {
+    if (percentage > 100) {
+      return 100
+    }
+
+    if (percentage < 0) {
+      return 0
+    }
+
+    return percentage
+  }
+
   constructor(props) {
     const { element } = props
 
@@ -19,18 +31,6 @@ class Progress {
     this.button.addEventListener('mousedown', this.handleMousedown)
   }
 
-  /* private */getPercentage(percentage) {
-    if (percentage > 100) {
-      return 100
-    }
-
-    if (percentage < 0) {
-      return 0
-    }
-
-    return percentage
-  }
-
   /* private */handleMousedown() {
     document.addEventListener('mousemove', this.handleMousemove)
     document.addEventListener('mouseup', this.handleMouseup)
@@ -38,7 +38,7 @@ class Progress {
 
   /* private */handleMousemove(event) {
     const left = event.clientX - this.offset
-    const percentage = this.getPercentage(left / this.width * 100)
+    const percentage = Progress.getPercentage((left / this.width) * 100)
 
     if (typeof this.props.handleProgress === 'function') {
       this.props.handleProgress(percentage)
@@ -55,9 +55,9 @@ class Progress {
   }
 
   update(percentage) {
-    percentage = this.getPercentage(percentage)
+    const calculatedPercentage = this.getPercentage(percentage)
 
-    this.setWidth(percentage)
+    this.setWidth(calculatedPercentage)
   }
 }
 

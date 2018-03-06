@@ -4,7 +4,7 @@ import MediaSession from './MediaSession'
 class Player {
   constructor(element) {
     this.element = element
-    this.name = `audio`
+    this.name = 'audio'
     this.audio = null
     this.duration = 0
 
@@ -70,21 +70,21 @@ class Player {
 
     this.setTimeString(currentTime)
 
-    this.progress.update(currentTime / this.duration * 100)
+    this.progress.update((currentTime / this.duration) * 100)
   }
 
   handleVolumeChange() {
     if (this.audio.volume === 0) {
-      this.element.classList.add(`is-muted`)
+      this.element.classList.add('is-muted')
     } else {
-      this.element.classList.remove(`is-muted`)
+      this.element.classList.remove('is-muted')
     }
 
     this.volume.update(this.audio.volume * 100)
   }
 
   togglePlay() {
-    this.element.classList.toggle(`is-playing`)
+    this.element.classList.toggle('is-playing')
 
     if (this.audio.paused) {
       this.audio.play()
@@ -122,26 +122,28 @@ class Player {
   }
 
   setupMediaSession() {
-    new MediaSession({
+    const mediaSession = new MediaSession({
       title: 'Unforgettable',
       artist: 'Nat King Cole',
       album: 'The Ultimate Collection (Remastered)',
       artwork: [
-        {src: 'https://dummyimage.com/96x96', sizes: '96x96', type: 'image/png'},
-        {src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png'},
-        {src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png'},
-        {src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png'},
-        {src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png'},
-        {src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png'},
+        { src: 'https://dummyimage.com/96x96', sizes: '96x96', type: 'image/png' },
+        { src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
+        { src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png' },
+        { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
+        { src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png' },
+        { src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' },
       ],
       onPlay: this.togglePlay,
       onPause: this.togglePlay,
     })
+
+    return mediaSession
   }
 
-  static getTimeFromSeconds(seconds) {
+  static getTimeFromSeconds(propsSeconds) {
     const time = []
-    seconds = parseInt(seconds, 10)
+    const seconds = parseInt(propsSeconds, 10)
     time[0] = `0${Math.floor(seconds / 3600)}`
     time[1] = `0${Math.floor((seconds - (time[0] * 3600)) / 60)}`
     time[2] = `0${seconds - (time[0] * 3600) - (time[1] * 60)}`

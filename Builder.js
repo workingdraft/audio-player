@@ -1,7 +1,7 @@
 class Builder {
   static index = 0
 
-  constructor () {
+  constructor() {
     Builder.index += 1
 
     this.name = 'audio'
@@ -59,14 +59,14 @@ class Builder {
           data-audio-speed
           id="${this.id}-speed"
         >
-          ${this.speeds.map((speed) => (
-            `<option
+          ${this.speeds.map(speed => (
+    `<option
               value="${speed}"
               ${this.currentSpeed === speed ? 'selected' : null}
             >
               ${speed}x
             </option>`
-          )).join('')}
+  )).join('')}
         </select>
       </div>
     `
