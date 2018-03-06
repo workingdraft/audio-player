@@ -2,6 +2,8 @@
 
 Audio Player for [http://workingdraft.de/](http://workingdraft.de/).
 
+[![Build Status](https://travis-ci.org/workingdraft/audio-player.svg?branch=master)](https://travis-ci.org/workingdraft/audio-player)
+
 ## Usage
 
 Install via npm or yarn
