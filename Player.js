@@ -1,5 +1,8 @@
+import 'babel-polyfill'
+
 import Progress from './Progress'
 import MediaSession from './MediaSession'
+import Chapters from './Chapters'
 
 class Player {
   constructor(element, config) {
@@ -31,6 +34,7 @@ class Player {
     })
 
     this.setAudio(element)
+    this.readChapters()
 
     element
       .querySelector(`[data-${this.name}-play]`)
@@ -124,7 +128,8 @@ class Player {
   }
 
   setupMediaSession() {
-    const settings = Object.assign(this.config, {
+    const config = this.config || {}
+    const settings = Object.assign(config, {
       onPlay: this.togglePlay,
       onPause: this.togglePlay,
     })
@@ -140,6 +145,19 @@ class Player {
     time[2] = `0${seconds - (time[0] * 3600) - (time[1] * 60)}`
 
     return time.map(t => t.substr(-2)).join(':')
+  }
+
+  readChapters() {
+    new Chapters(this.audio.currentSrc)
+      .then(this.addChapters)
+  }
+
+  addChapters(chapters) {
+    if (!chapters || chapters.constructor !== Array) {
+      return
+    }
+
+    this.capters = chapters
   }
 }
 

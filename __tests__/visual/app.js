@@ -35,10 +35,11 @@ const config = {
 
 window.onload = () => {
   const elements = document.querySelectorAll('[data-render]')
-  const builder = new Builder()
 
   Array.from(elements).forEach((element) => {
-    element.appendChild(builder.render())
+    const builder = new Builder()
+
+    builder.appendTo(element)
 
     return new Player(element, config)
   })

@@ -9,6 +9,7 @@ module.exports = {
     ],
   },
   devtool: DEBUG ? 'inline-sourcemap' : false,
+  mode: DEBUG ? 'development' : 'production',
   cache: true,
   output: {
     path: path.resolve(__dirname, '__tests__/visual/dist/'),

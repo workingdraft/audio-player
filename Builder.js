@@ -47,6 +47,17 @@ class Builder {
     `
   }
 
+  renderSpeedOptions() {
+    return this.speeds.map(speed => (
+      `<option
+        value="${speed}"
+        ${this.currentSpeed === speed ? 'selected' : null}
+      >
+        ${speed}x
+      </option>`
+    )).join('')
+  }
+
   renderSpeed() {
     return `
       <div class="${this.classNamePrefix}_speed">
@@ -59,14 +70,7 @@ class Builder {
           data-audio-speed
           id="${this.id}-speed"
         >
-          ${this.speeds.map(speed => (
-    `<option
-              value="${speed}"
-              ${this.currentSpeed === speed ? 'selected' : null}
-            >
-              ${speed}x
-            </option>`
-  )).join('')}
+          ${this.renderSpeedOptions()}
         </select>
       </div>
     `
@@ -87,6 +91,12 @@ class Builder {
     fragment.appendChild(div)
 
     return fragment
+  }
+
+  appendTo(element) {
+    const fragment = this.render()
+
+    element.appendChild(fragment)
   }
 }
 

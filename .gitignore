@@ -2,3 +2,5 @@ dist/
 .idea/
 node_modules/
 __tests__/coverage/
+
+__tests__/visual/test-2.mp3
