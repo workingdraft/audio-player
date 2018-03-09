@@ -1,7 +1,4 @@
-import {
-  Player,
-  Builder,
-} from '../../'
+import { Player } from '../../'
 
 const config = {
   title: 'Unforgettable',
@@ -35,12 +32,7 @@ const config = {
 
 window.onload = () => {
   const elements = document.querySelectorAll('[data-render]')
+  const elementsArray = Array.from(elements)
 
-  Array.from(elements).forEach((element) => {
-    const builder = new Builder()
-
-    builder.appendTo(element)
-
-    return new Player(element, config)
-  })
+  elementsArray.forEach(element => new Player(element, config).initialize())
 }

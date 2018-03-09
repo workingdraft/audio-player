@@ -28,15 +28,14 @@ Within your script you now need to initialize the player by building the markup
 and running the player’s functions.
 
 ```javascript
-import { Player, Builder } from 'wd-audio-player'
+import { Player } from 'wd-audio-player'
 
+const config = {
+  // …
+}
 const element = document.querySelector('[data-my-app]')
-const builder = new Builder()
-const player = builder.render()
 
-element.appendChild(player)
-
-new Player(element)
+new Player(element, config).initialize()
 ```
 
 ## License
