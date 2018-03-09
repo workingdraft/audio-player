@@ -157,7 +157,7 @@ class Player {
       return
     }
 
-    this.capters = chapters
+    this.chapters = chapters
   }
 }
 
