@@ -18,14 +18,22 @@ const audioMock = {
   play: jest.fn(() => Promise.resolve()),
 }
 
-jest.mock('../../MediaSession')
-jest.mock('../../Progress')
+jest.mock('../../lib/MediaSession')
+jest.mock('../../lib/Progress')
 
 describe('Player', () => {
+  document.body.innerHTML += `
+    <div data-render>
+      <audio preload="auto" data-audio-player>
+        <source src="/test.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  `
+
   let player = null
 
-  beforeEach(() => {
-    player = new Player(elementMock)
+  beforeEach(async () => {
+    player = await new Player(elementMock).initialize()
     player.audio = audioMock
 
     // Clear mocks
@@ -33,8 +41,9 @@ describe('Player', () => {
     Progress.mockClear()
   })
 
-  describe('constructor()', () => {
+  describe('initialize()', () => {
     test('initializes new Progress object for progress', () => {
+
       // then
       expect(player.progress).toBeInstanceOf(Progress)
     })
