@@ -1,6 +1,6 @@
-import MediaSession from '../../MediaSession'
-import Player from '../../Player'
-import Progress from '../../Progress'
+import MediaSession from '../../lib/MediaSession'
+import Player from '../../lib/Player'
+import Progress from '../../lib/Progress'
 
 const elementMock = {
   querySelector: jest.fn().mockReturnThis(),
