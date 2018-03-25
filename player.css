@@ -13,6 +13,9 @@
   box-sizing: border-box;
 }
 
+.audio {
+  display: flex;
+}
 
 .audio_sound {
   display: flex;
@@ -20,8 +23,7 @@
 }
 
 .audio_volume {
-  display: flex;
-  flex: 1;
+  display: none;
 }
 
 .audio_button {
@@ -150,10 +152,6 @@
 }
 
 @media (min-width: 40rem) {
-  .audio {
-    display: flex;
-  }
-
   .audio_progress {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -165,5 +163,10 @@
 
   .audio_speed {
     padding-top: 2rem;
+  }
+
+  .audio_volume {
+    display: flex;
+    flex: 1;
   }
 }
