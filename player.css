@@ -7,6 +7,12 @@
   --audio--color--select: #8f098f;
 }
 
+.audio,
+.audio * {
+  box-sizing: border-box;
+}
+
+
 .audio_sound {
   display: flex;
   flex: 4;
@@ -27,11 +33,36 @@
 
 .audio_button_icon {
   display: inline-block;
-  width: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .audio_button_icon--inactive {
   display: none;
+}
+
+.audio_button_icon--small {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.audio_button {
+  position: relative;
+  border: 0;
+  flex: none;
+  width: auto;
+  height: auto;
+  background: transparent;
+  margin-right: 0.75rem;
+  margin-top: -0.5rem;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.audio_button:hover {
+  transform: scale(1.05, 1.05);
 }
 
 .audio.is-playing .audio_button--play .audio_button_icon,
@@ -49,6 +80,7 @@
 }
 
 .audio_duration {
+  display: inline-block;
   font-size: 0.75rem;
   padding-top: 0.5rem;
 }
@@ -64,8 +96,8 @@
   height: 0.5rem;
   background-color: rgba(255, 255, 255, 0.5);
   margin-top: 0.5rem;
-  margin-left: 0.5rem;
   border-radius: 10px;
+  margin-right: 1.5rem;
 }
 
 .audio_progress_inner {
@@ -109,9 +141,7 @@
 
 .audio_speed {
   padding-top: 1rem;
-  padding-left: 0.5rem;
   font-size: 0.875rem;
-  margin-left: 1rem;
 }
 
 @media (min-width: 40rem) {
@@ -125,7 +155,7 @@
   }
 
   .audio_progress_bar {
-    margin-right: 1.5rem;
+    margin-right: 1rem;
   }
 
   .audio_speed {
