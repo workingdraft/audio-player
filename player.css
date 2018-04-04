@@ -5,6 +5,7 @@
   --audio--color--highlight: #8f098f;
   --audio--color--base: #102027;
   --audio--color--select: #8f098f;
+  --audio--color--chapter: #9c9c9c;
   --audio--transtion: 0.2s;
 }
 
@@ -92,6 +93,59 @@
   padding-top: 0.5rem;
 }
 
+.audio_chapters {
+  position: relative;
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  font-size: 0.75rem;
+}
+
+.audio_chapters_chapter {
+  position: absolute;
+  top: 0;
+  padding-left: 1rem;
+  margin-top: -0.6rem;
+  cursor: pointer;
+}
+
+.audio_chapters_chapter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--audio--color--chapter);
+  box-shadow: 0 2px 1px rgba(100, 100, 100, 0.3);
+  transform: scale(0.75, 0.75);
+  transition: var(--audio--transtion) ease-out;
+}
+
+.audio_chapters_chapter:hover::before {
+  transform: scale(1, 1);
+}
+
+.audio_chapters_chapter_title {
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  white-space: nowrap;
+  transition: var(--audio--transtion) ease-out;
+  background: #fff;
+  border-radius: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  box-shadow: 0 2px 1px rgba(100, 100, 100, 0.3);
+}
+
+.audio_chapters_chapter:hover .audio_chapters_chapter_title {
+  opacity: 1;
+}
+
 .audio_progress {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -128,6 +182,7 @@
 
 .audio_progress_button {
   position: absolute;
+  z-index: 1;
   top: 50%;
   right: 0;
   width: 1rem;
