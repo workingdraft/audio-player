@@ -178,6 +178,7 @@
   border-radius: 10px;
   background-color: var(--audio--color--base);
   opacity: 0.15;
+  transition: width 0.15s;
 }
 
 .audio_progress_button {
