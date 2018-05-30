@@ -10,7 +10,7 @@
     "build": "webpack",
     "serve": "nodemon __tests__/visual/server.js",
     "lint": "eslint **/*.js",
-    "test": "'yarn lint && yarn test:once",
+    "test": "yarn lint && yarn test:once",
     "test:all": "jest --watch --config jest.config.json --coverage",
     "test:once": "jest --bail --config jest.config.json --coverage"
   },
