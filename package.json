@@ -1,6 +1,6 @@
 {
   "name": "wd-audio-player",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.1",
   "main": "index.js",
   "repository": "git@github.com:workingdraft/audio-player.git",
   "author": "Hans Christian Reinl <info@drublic.de>",
