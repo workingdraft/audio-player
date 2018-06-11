@@ -12,7 +12,8 @@
     "lint": "eslint **/*.js",
     "test": "yarn lint && yarn test:once",
     "test:all": "jest --watch --config jest.config.json --coverage",
-    "test:once": "jest --bail --config jest.config.json --coverage"
+    "test:once": "jest --bail --config jest.config.json --coverage",
+    "prepare": "yarn build"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
