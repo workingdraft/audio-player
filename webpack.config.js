@@ -5,6 +5,7 @@ const DEBUG = process.env.NODE_ENV !== 'production'
 module.exports = {
   entry: {
     app: [
+      'babel-polyfill',
       path.resolve(__dirname, '__tests__/visual/app.js'),
     ],
   },

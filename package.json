@@ -1,19 +1,20 @@
 {
   "name": "wd-audio-player",
   "version": "1.0.0-alpha.1",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:workingdraft/audio-player.git",
   "author": "Hans Christian Reinl <info@drublic.de>",
   "license": "MIT",
   "scripts": {
     "start": "concurrently 'yarn serve' 'yarn build --watch'",
     "build": "webpack",
+    "build:prod": "webpack --config webpack.prod.config.js",
     "serve": "nodemon __tests__/visual/server.js",
     "lint": "eslint **/*.js",
     "test": "yarn lint && yarn test:once",
     "test:all": "jest --watch --config jest.config.json --coverage",
     "test:once": "jest --bail --config jest.config.json --coverage",
-    "prepare": "yarn build"
+    "prepare": "yarn build:prod -p"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

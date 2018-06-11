@@ -1,0 +1,7 @@
+node_modules/
+.babelrc
+.editorconfig
+.eslintrc.js
+.travis.yml
+jest.config.json
+webpack*.json
