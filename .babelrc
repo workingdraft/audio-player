@@ -1,15 +1,9 @@
 {
   "presets": [
-    "env"
+    "@babel/env"
   ],
   "plugins": [
-    "transform-regenerator",
-    [
-      "transform-class-properties",
-      {
-        "spec": true
-      }
-    ]
+    "@babel/proposal-class-properties"
   ]
 }
 
