@@ -1,13 +1,16 @@
 {
   "collectCoverageFrom": [
     "**/*.js",
-    "!__tests__/**/*",
-    "!webpack.config.js",
+    "!__tests__/coverage/**/*",
+    "!__tests__/visual/dist/**/*",
+    "!dist/**/*",
+    "!webpack.*.js",
+    "!babel.*.js",
     "!.eslintrc.js"
   ],
   "coverageDirectory": "__tests__/coverage/",
-  "moduleFileExtensions": [
-    "js"
-  ],
-  "testRegex": "\\-test\\.js$"
+  "testRegex": "\\-test\\.js$",
+  "transform": {
+    "^.+\\.[t|j]sx?$": "babel-jest"
+  }
 }
