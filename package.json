@@ -10,7 +10,7 @@
     "build": "webpack",
     "build:prod": "webpack --config webpack.prod.config.js",
     "serve": "nodemon __tests__/visual/server.js",
-    "lint": "eslint **/*.js",
+    "lint": "eslint .",
     "test": "yarn lint && yarn test:once",
     "test:all": "jest --watch --config jest.config.json --coverage",
     "test:once": "jest --bail --config jest.config.json --coverage",

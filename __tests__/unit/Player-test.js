@@ -2,7 +2,7 @@ import MediaSession from '../../lib/MediaSession'
 import Player from '../../lib/Player'
 import Progress from '../../lib/Progress'
 
-const elementMock = {
+let elementMock = {
   querySelector: jest.fn().mockReturnThis(),
   addEventListener: jest.fn(),
   getBoundingClientRect: jest.fn(),
@@ -43,7 +43,6 @@ describe('Player', () => {
 
   describe('initialize()', () => {
     test('initializes new Progress object for progress', () => {
-
       // then
       expect(player.progress).toBeInstanceOf(Progress)
     })
@@ -86,7 +85,7 @@ describe('Player', () => {
   describe('setAudio()', () => {
     test('queries for [data-audio-player]', () => {
       // given
-      const elementMock = {
+      elementMock = {
         querySelector: jest.fn().mockReturnThis(),
         addEventListener: jest.fn(),
       }
@@ -100,7 +99,7 @@ describe('Player', () => {
 
     test('adds an event listener to the loadedmetadata event', () => {
       // given
-      const elementMock = {
+      elementMock = {
         querySelector: jest.fn().mockReturnThis(),
         addEventListener: jest.fn(),
       }
@@ -116,13 +115,11 @@ describe('Player', () => {
       // given
       player.handleMetadata = jest.fn()
 
-      const elementMock = {
-        querySelector: jest.fn().mockImplementationOnce(() => {
-          return {
-            addEventListener: jest.fn(),
-            readyState: 2,
-          }
-        }),
+      elementMock = {
+        querySelector: jest.fn().mockImplementationOnce(() => ({
+          addEventListener: jest.fn(),
+          readyState: 2,
+        })),
       }
 
       // when
@@ -136,13 +133,11 @@ describe('Player', () => {
       // given
       player.handleMetadata = jest.fn()
 
-      const elementMock = {
-        querySelector: jest.fn().mockImplementationOnce(() => {
-          return {
-            addEventListener: jest.fn(),
-            readyState: 1,
-          }
-        }),
+      elementMock = {
+        querySelector: jest.fn().mockImplementationOnce(() => ({
+          addEventListener: jest.fn(),
+          readyState: 1,
+        })),
       }
 
       // when
@@ -154,7 +149,7 @@ describe('Player', () => {
 
     test('adds an event listener to the timeupdate event', () => {
       // given
-      const elementMock = {
+      elementMock = {
         querySelector: jest.fn().mockReturnThis(),
         addEventListener: jest.fn(),
       }
@@ -168,7 +163,7 @@ describe('Player', () => {
 
     test('adds an event listener to the volumechange event', () => {
       // given
-      const elementMock = {
+      elementMock = {
         querySelector: jest.fn().mockReturnThis(),
         addEventListener: jest.fn(),
       }
