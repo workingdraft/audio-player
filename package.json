@@ -33,7 +33,11 @@
     "jest": "^24.8.0",
     "nodemon": "^1.19.1",
     "webpack": "^4.36.1",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.6",
+    "minimist": "^1.2.3",
+    "acorn": "^6.4.1",
+    "serialize-javascript": "^2.1.1",
+    "set-value": "^2.0.1"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
