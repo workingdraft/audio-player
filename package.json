@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "jsmediatags": "^3.9.2"
+    "jsmediatags": "^3.9.2",
+    "node-notifier": "^8.0.1"
   }
 }
