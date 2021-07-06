@@ -43,5 +43,12 @@
     "babel-polyfill": "^6.26.0",
     "jsmediatags": "^3.9.2",
     "node-notifier": "^8.0.1"
+  },
+  "resolutions": {
+    "**/glob-parent": "^5.1.2",
+    "**/ws": "^7.4.6",
+    "**/lodash": "^4.17.21",
+    "**/yargs-parser": "^18",
+    "**/y18n": "^5.0.5"
   }
 }
